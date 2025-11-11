@@ -1,65 +1,133 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
     [System.Serializable]
+    public class EnemyGroup
+    {
+        public GameObject enemyPrefab;
+        public int count;
+        public float spawnRate = 1f;
+    }
+
+    [System.Serializable]
     public class Wave
     {
         public string name;
-        public GameObject enemyPrefab;
-        public int count;         
-        public float spawnRate;     
+        public EnemyGroup[] enemyGroups;
     }
 
-    public Wave[] waves;           
+    public Wave[] waves;
     private int currentWaveIndex = 0;
 
     public Transform[] spawnPoints;
     public float timeBetweenWaves = 5f;
-    private float countdown = 2f;
+    private float waveCountdown = 0f;
 
     private bool isSpawning = false;
+    private bool gameEnded = false;
+
+    [Header("UI Panels")]
+    public GameObject winPanel;
+    public GameObject gameOverPanel;
+
+    [Header("Player Reference")]
+    public PlayerHealth playerHealth;  
+
+    void Start()
+    {
+        waveCountdown = 2f;
+        winPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+    }
 
     void Update()
     {
+        
+        if (gameEnded)
+            return;
+
+        
+        if (playerHealth != null && playerHealth.currentHealth <= 0)
+        {
+            GameOver();
+            return;
+        }
+
         if (isSpawning)
             return;
 
-        if (countdown <= 0f)
+        if (EnemyMasihHidup())
+            return;
+
+        if (waveCountdown <= 0f)
         {
-            StartCoroutine(SpawnWave(waves[currentWaveIndex]));
-            countdown = timeBetweenWaves;
+            if (currentWaveIndex < waves.Length)
+            {
+                StartCoroutine(SpawnWave(waves[currentWaveIndex]));
+                waveCountdown = timeBetweenWaves;
+            }
+            else
+            {
+                
+                WinGame();
+            }
         }
 
-        countdown -= Time.deltaTime;
+        waveCountdown -= Time.deltaTime;
     }
 
     IEnumerator SpawnWave(Wave wave)
     {
         isSpawning = true;
-        Debug.Log("Mulai Wave: " + wave.name);
+        Debug.Log("Memulai Wave: " + wave.name);
 
-        for (int i = 0; i < wave.count; i++)
+        foreach (EnemyGroup group in wave.enemyGroups)
         {
-            SpawnEnemy(wave.enemyPrefab);
-            yield return new WaitForSeconds(1f / wave.spawnRate);
+            StartCoroutine(SpawnEnemyGroup(group));
+            yield return new WaitForSeconds(0.5f);
         }
 
-        Debug.Log("Wave Selesai!");
-
+        yield return new WaitForSeconds(1f);
         isSpawning = false;
+        currentWaveIndex++;
+    }
 
-       
-        if (currentWaveIndex + 1 < waves.Length)
-            currentWaveIndex++;
-        else
-            Debug.Log("Semua wave selesai!");
+    IEnumerator SpawnEnemyGroup(EnemyGroup group)
+    {
+        for (int i = 0; i < group.count; i++)
+        {
+            SpawnEnemy(group.enemyPrefab);
+            yield return new WaitForSeconds(1f / group.spawnRate);
+        }
     }
 
     void SpawnEnemy(GameObject enemy)
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    bool EnemyMasihHidup()
+    {
+        return GameObject.FindGameObjectsWithTag("enemy").Length > 0;
+    }
+
+    void WinGame()
+    {
+        Debug.Log("Semua wave selesai .menang!");
+        winPanel.SetActive(true);
+        gameEnded = true;
+        Time.timeScale = 0f;
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Player mati, Game Over!");
+        gameOverPanel.SetActive(true);
+        gameEnded = true;
+        Time.timeScale = 0f; 
     }
 }
