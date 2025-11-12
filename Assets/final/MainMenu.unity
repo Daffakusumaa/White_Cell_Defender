@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene1Name: level 1
   scene2Name: level 2
-  scene3Name: Gameplay3
+  scene3Name: level 3
 --- !u!114 &886766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4412,7 +4412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1927510107
 RectTransform:
   m_ObjectHideFlags: 0
