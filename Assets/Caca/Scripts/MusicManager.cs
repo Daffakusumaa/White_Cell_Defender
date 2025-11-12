@@ -57,11 +57,11 @@ public class MusicManager : MonoBehaviour
         {
             case "MainMenu":
                 return "MainMenuMusic";
-            case "Level 1":
+            case "level 1":
                 return "IngameMusic";
-            case "Level 2":
+            case "level 2":
                 return "IngameMusic";
-            case "Level 3":
+            case "level 3":
                 return "IngameMusic";
             default:
                 return "DefaultMusic";
