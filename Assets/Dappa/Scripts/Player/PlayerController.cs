@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
+    [SerializeField] private float dashCD = .5f;
     [SerializeField] private TrailRenderer myTrailRenderer;
 
     private PlayerControls playerControls;
@@ -96,7 +97,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator EndDashRoutine() 
     {
         float dashTime = .2f;
-        float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
         moveSpeed = startingMoveSpeed;
         myTrailRenderer.emitting = false;
