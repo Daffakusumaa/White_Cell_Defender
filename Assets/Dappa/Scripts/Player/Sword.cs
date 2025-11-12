@@ -72,6 +72,9 @@ public class Sword : MonoBehaviour
             myAnimator.SetTrigger("Ultimate");
             ultimateCollider.gameObject.SetActive(true);
             Debug.Log("Ultiing");
+
+            SoundManager.Instance.PlayUltiSound();
+
             ultiAnim = Instantiate(slashUltiAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
             ultiAnim.transform.parent = this.transform.parent;
             StartCoroutine(UltiCDRoutine());
@@ -107,6 +110,9 @@ public class Sword : MonoBehaviour
             isAttacking = true;
             myAnimator.SetTrigger("Attack");
             Debug.Log("Attacking");
+
+            SoundManager.Instance.PlayAttackSound();
+
             weaponCollider.gameObject.SetActive(true);
             slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
             slashAnim.transform.parent = this.transform.parent;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class WaveSpawner1 : MonoBehaviour
+public class WaveSpawner : MonoBehaviour
 {
     [System.Serializable]
     public class EnemyGroup
@@ -36,42 +36,41 @@ public class WaveSpawner1 : MonoBehaviour
 
     void Start()
     {
-       
+        
         if (winPanel != null) winPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
 
-        
+        // Mulai wave pertama
         StartCoroutine(StartNextWave());
     }
 
     void Update()
     {
-       
+        
         if (gameEnded)
             return;
 
-        
+        // Kalau player mati → Game Over
         //if (playerHealth != null && playerHealth.currentHealth <= 0)
-        //{
-       //     GameOver();
-       //     return;
+       // {
+          //  GameOver();
+          //  return;
        // }
 
         
         if (isSpawning)
             return;
 
-       
+        
         if (!EnemyMasihHidup())
         {
-           
+            
             if (currentWaveIndex >= waves.Length)
             {
                 WinGame();
                 return;
             }
 
-           
             StartCoroutine(StartNextWave());
         }
     }
@@ -83,12 +82,12 @@ public class WaveSpawner1 : MonoBehaviour
         if (currentWaveIndex < waves.Length)
         {
             Wave wave = waves[currentWaveIndex];
-            Debug.Log($" Memulai Wave {currentWaveIndex + 1}: {wave.name}");
+            Debug.Log($"🚨 Memulai Wave {currentWaveIndex + 1}: {wave.name}");
 
             foreach (EnemyGroup group in wave.enemyGroups)
             {
                 StartCoroutine(SpawnEnemyGroup(group));
-                yield return new WaitForSeconds(0.5f); 
+                yield return new WaitForSeconds(0.5f);
             }
 
             currentWaveIndex++;
@@ -121,7 +120,7 @@ public class WaveSpawner1 : MonoBehaviour
 
     void WinGame()
     {
-        Debug.Log("🎉 Semua wave selesai — kamu MENANG!");
+        Debug.Log(" Semua wave selesai — kamu MENANG!");
         if (winPanel != null) winPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
@@ -129,7 +128,7 @@ public class WaveSpawner1 : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("💀 Player mati — GAME OVER!");
+        Debug.Log(" Player mati — GAME OVER!");
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
