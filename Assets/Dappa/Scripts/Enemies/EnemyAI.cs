@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float roamChangeDirection = 2f;
+    [SerializeField] public int damageDeal = 1;
 
     private enum State
     {
