@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (enemy)
         {
-            TakeDamage(1, other.transform);
+            TakeDamage(enemy.damageDeal, other.transform);
         }
     }
     
