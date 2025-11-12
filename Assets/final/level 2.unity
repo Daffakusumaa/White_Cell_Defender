@@ -2570,7 +2570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 2472746836257648992}
-  scene1Name: MainMenu
+  scene1Name: level 3
   scene2Name: 
 --- !u!114 &1094785274481098008
 MonoBehaviour:
