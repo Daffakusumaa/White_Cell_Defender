@@ -57,12 +57,12 @@ public class MusicManager : MonoBehaviour
         {
             case "MainMenu":
                 return "MainMenuMusic";
-            case "Level1":
-                return "Level1Music";
-            case "BossBattle":
-                return "BossBattleMusic";
-            case "EndingScene":
-                return "EndingMusic";
+            case "Level 1":
+                return "IngameMusic";
+            case "Level 2":
+                return "IngameMusic";
+            case "Level 3":
+                return "IngameMusic";
             default:
                 return "DefaultMusic";
         }

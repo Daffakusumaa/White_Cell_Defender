@@ -4073,7 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 5725378241639963466}
-  sceneName: 
+  sceneName: MainMenu
 --- !u!224 &6508823643469353402
 RectTransform:
   m_ObjectHideFlags: 0

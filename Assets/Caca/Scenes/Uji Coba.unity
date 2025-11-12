@@ -326,7 +326,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96472c082e34c744b8c41cecc9a7cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tracks: []
+  tracks:
+  - trackName: MainMenuMusic
+    clip: {fileID: 8300000, guid: 9969a90b6d863f148a2b12178274c023, type: 3}
+  - trackName: Level1Music
+    clip: {fileID: 8300000, guid: 1831b9b655e6baa4da12c73837303ee1, type: 3}
+  - trackName: 
+    clip: {fileID: 0}
+  - trackName: 
+    clip: {fileID: 0}
 --- !u!4 &1072111986
 Transform:
   m_ObjectHideFlags: 0
