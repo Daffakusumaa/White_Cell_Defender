@@ -43,6 +43,9 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
+
+            SoundManager.Instance.PlayenemyDieSound();
+
             Destroy(gameObject);
         }
     }
