@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     [Header("Clips")]
     public AudioClip swordAttackClip;
     public AudioClip swordUltiClip;
+    public AudioClip enemyDie;
 
     private void Awake()
     {
@@ -42,5 +43,9 @@ public class SoundManager : MonoBehaviour
     public void PlayUltiSound()
     {
         PlaySFX(swordUltiClip);
+    }
+    public void PlayenemyDieSound()
+    {
+        PlaySFX(enemyDie);
     }
 }

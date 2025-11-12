@@ -10,10 +10,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float damageRecoveryTime = 1f;
 
     private Slider healthSlider;
-    private int currentHealth;
+    public int currentHealth;
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
+    private WaveSpawner waveSpawner;
 
     private void Awake() 
     {
@@ -64,8 +65,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0) {
             currentHealth = 0;
-            //Debug.Log("Player Death");
-            PlayerDie();
+            Debug.Log("Player Death");
+            waveSpawner.GameOver();
         }
     }
 
@@ -84,11 +85,5 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
-    }
-    
-    private void PlayerDie()
-    {
-        // Tinggal panggil scene game overnya caca
-        Destroy(gameObject);
     }
 }

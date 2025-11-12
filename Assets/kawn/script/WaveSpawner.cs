@@ -37,8 +37,8 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         
-        if (winPanel != null) winPanel.SetActive(false);
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        //if (winPanel != null) winPanel.SetActive(false);
+        //if (gameOverPanel != null) gameOverPanel.SetActive(false);
 
         // Mulai wave pertama
         StartCoroutine(StartNextWave());
@@ -50,12 +50,12 @@ public class WaveSpawner : MonoBehaviour
         if (gameEnded)
             return;
 
-        // Kalau player mati → Game Over
-        //if (playerHealth != null && playerHealth.currentHealth <= 0)
-       // {
-          //  GameOver();
-          //  return;
-       // }
+        //Kalau player mati → Game Over
+        if (playerHealth != null && playerHealth.currentHealth <= 0)
+        {
+            GameOver();
+            return;
+        }
 
         
         if (isSpawning)
@@ -126,7 +126,7 @@ public class WaveSpawner : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void GameOver()
+    public void GameOver()
     {
         Debug.Log(" Player mati — GAME OVER!");
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
