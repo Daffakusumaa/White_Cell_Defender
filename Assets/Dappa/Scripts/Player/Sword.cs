@@ -16,6 +16,7 @@ public class Sword : MonoBehaviour
     private Animator myAnimator;
     private PlayerController playerController;
     private ActiveWeapon activeWeapon;
+    private Knockback knockback;
     private bool attackButtonDown, isAttacking = false;
     private bool ultiButtonDown, isUltiing = false;
 
@@ -28,6 +29,7 @@ public class Sword : MonoBehaviour
         playerControls = new PlayerControls();
         playerController = GetComponentInParent<PlayerController>();
         activeWeapon = GetComponentInParent<ActiveWeapon>();
+        knockback = GetComponentInParent<Knockback>();
     }
 
     private void OnEnable()
@@ -46,6 +48,7 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
+        if (knockback.GettingKnockedBack) { return; }
         MouseFollowWithOffset();
         Attack();
         Ulti();

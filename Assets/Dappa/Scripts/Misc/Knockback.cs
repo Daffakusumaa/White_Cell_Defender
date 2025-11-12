@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    public bool GettingKnockBack { get; private set; }
+    public bool GettingKnockedBack { get; private set; }
     [SerializeField] private float knockBackTime = 2f;
     private Rigidbody2D rb;
 
@@ -15,7 +15,7 @@ public class Knockback : MonoBehaviour
 
     public void GetKnockedBack(Transform damageSource, float knockBackThrust)
     {
-        GettingKnockBack = true;
+        GettingKnockedBack = true;
         Vector2 difference = (transform.position - damageSource.position).normalized * knockBackThrust * rb.mass;
         rb.AddForce(difference, ForceMode2D.Impulse);
         StartCoroutine(KnockRoutine());
@@ -25,6 +25,6 @@ public class Knockback : MonoBehaviour
     {
         yield return new WaitForSeconds(knockBackTime);
         rb.velocity = Vector2.zero;
-        GettingKnockBack = false;
+        GettingKnockedBack = false;
     }
 }
