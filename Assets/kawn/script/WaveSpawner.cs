@@ -6,65 +6,65 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyGroup
     {
+        [Header("Prefab musuh yang akan muncul di wave ini")]
         public GameObject enemyPrefab;
-        public int count;
+        [Header("Jumlah musuh dari prefab ini")]
+        public int count = 1;
+        [Header("Kecepatan spawn")]
         public float spawnRate = 1f;
     }
 
     [System.Serializable]
     public class Wave
     {
+        [Header("Nama wave")]
         public string name;
+        [Header("Grup musuh di wave ini")]
         public EnemyGroup[] enemyGroups;
     }
 
-    [Header("Wave Settings")]
+    [Header("Wave yang Akan Dimainkan")]
     public Wave[] waves;
     private int currentWaveIndex = 0;
     private bool isSpawning = false;
     private bool gameEnded = false;
 
-    [Header("Spawn Points")]
+    [Header("spawn musuh")]
     public Transform[] spawnPoints;
 
-    [Header("UI Panels")]
+    [Header("Panel UI")]
     public GameObject winPanel;
     public GameObject gameOverPanel;
 
-    [Header("Player Reference")]
+    [Header("Referensi Player")]
     public PlayerHealth playerHealth;
 
     void Start()
     {
-        
-        //if (winPanel != null) winPanel.SetActive(false);
-        //if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        if (winPanel != null) winPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
 
-        // Mulai wave pertama
+        
         StartCoroutine(StartNextWave());
     }
 
     void Update()
     {
-        
         if (gameEnded)
             return;
 
-        //Kalau player mati → Game Over
         if (playerHealth != null && playerHealth.currentHealth <= 0)
         {
             GameOver();
             return;
         }
 
-        
         if (isSpawning)
             return;
 
-        
+       
         if (!EnemyMasihHidup())
         {
-            
             if (currentWaveIndex >= waves.Length)
             {
                 WinGame();
@@ -82,16 +82,15 @@ public class WaveSpawner : MonoBehaviour
         if (currentWaveIndex < waves.Length)
         {
             Wave wave = waves[currentWaveIndex];
-            Debug.Log($"🚨 Memulai Wave {currentWaveIndex + 1}: {wave.name}");
+            Debug.Log($"Memulai Wave {currentWaveIndex + 1}: {wave.name}");
 
+            
             foreach (EnemyGroup group in wave.enemyGroups)
             {
-                StartCoroutine(SpawnEnemyGroup(group));
-                yield return new WaitForSeconds(0.5f);
+                yield return StartCoroutine(SpawnEnemyGroup(group));
             }
 
             currentWaveIndex++;
-            yield return new WaitForSeconds(1f); 
         }
 
         isSpawning = false;
@@ -120,7 +119,7 @@ public class WaveSpawner : MonoBehaviour
 
     void WinGame()
     {
-        Debug.Log(" Semua wave selesai — kamu MENANG!");
+        Debug.Log("Semua wave selesai — kamu MENANG!");
         if (winPanel != null) winPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
@@ -128,7 +127,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log(" Player mati — GAME OVER!");
+        Debug.Log("Player mati — GAME OVER!");
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
