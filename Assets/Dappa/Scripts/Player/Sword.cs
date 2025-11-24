@@ -90,6 +90,20 @@ public class Sword : MonoBehaviour
     {
         Debug.Log("Done Ultiing");
         ultimateCollider.gameObject.SetActive(false);
+        weaponCollider.gameObject.SetActive(false);
+
+    }
+
+    public void UltiFlipAnimEvent()
+    {
+        if (playerController.FacingLeft)
+        {
+            ultiAnim.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            ultiAnim.GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void StartAttacking()
@@ -130,6 +144,7 @@ public class Sword : MonoBehaviour
     {
         Debug.Log("Done Attacking");
         weaponCollider.gameObject.SetActive(false);
+        ultimateCollider.gameObject.SetActive(false);
     }
 
     public void SwingUpFlipAnimEvent()

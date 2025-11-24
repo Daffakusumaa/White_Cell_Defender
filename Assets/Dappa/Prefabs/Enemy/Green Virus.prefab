@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamChangeDirection: 2
+  damageDeal: 2
 --- !u!114 &3119631155560345120
 MonoBehaviour:
   m_ObjectHideFlags: 0
