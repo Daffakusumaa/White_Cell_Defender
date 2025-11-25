@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d323ff031cad94f93dc02a62889bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamChangeDirection: 2
   damageDeal: 3
 --- !u!114 &1322028924007650341
 MonoBehaviour:

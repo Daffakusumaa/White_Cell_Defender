@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private float roamChangeDirection = 2f;
+    //[SerializeField] private float roamChangeDirection = 2f;
     [SerializeField] public int damageDeal = 1;
 
-    private enum State
+    public enum State
     {
-        Roaming
+        //Roaming,
+        //Chasing
     }
 
     private State state;
@@ -19,26 +20,27 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         enemyPathfinding = GetComponent<EnemyPathfinding>();
-        state = State.Roaming;
+        //state = State.Roaming;
+        //state = State.Chasing;
     }
 
     private void Start()
     {
-        StartCoroutine(RoamingRoutine());
+        //StartCoroutine(RoamingRoutine());
     }
 
-    private IEnumerator RoamingRoutine()
-    {
-        while (state == State.Roaming)
-        {
-            Vector2 roamPosition = GetRoamingPosition();
-            enemyPathfinding.MoveTo(roamPosition);
-            yield return new WaitForSeconds(roamChangeDirection);
-        }
-    }
+    // private IEnumerator RoamingRoutine()
+    // {
+    //     while (state == State.Roaming)
+    //     {
+    //         Vector2 roamPosition = GetRoamingPosition();
+    //         enemyPathfinding.MoveTo(roamPosition);
+    //         yield return new WaitForSeconds(roamChangeDirection);
+    //     }
+    // }
 
-    private Vector2 GetRoamingPosition()
-    {
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-    }
+    // private Vector2 GetRoamingPosition()
+    // {
+    //     return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+    // }
 }

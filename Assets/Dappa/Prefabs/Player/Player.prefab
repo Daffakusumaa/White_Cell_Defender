@@ -303,7 +303,7 @@ MonoBehaviour:
   weaponCollider: {fileID: 2800857844271529941}
   ultimateCollider: {fileID: 6074133665839759459}
   swordAttackCD: 0.5
-  ultimateCD: 1
+  ultimateCD: 10
 --- !u!1 &6758636216501565265
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 2910123006548087996}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

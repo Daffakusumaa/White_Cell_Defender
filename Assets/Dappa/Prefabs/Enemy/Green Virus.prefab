@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d323ff031cad94f93dc02a62889bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamChangeDirection: 2
   damageDeal: 2
 --- !u!114 &3119631155560345120
 MonoBehaviour:
@@ -180,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37e57f494e3d1143bb70fe2820f7b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &1573035171487577388
 MonoBehaviour:
   m_ObjectHideFlags: 0
