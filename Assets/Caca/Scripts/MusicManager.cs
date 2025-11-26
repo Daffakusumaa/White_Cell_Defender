@@ -64,7 +64,7 @@ public class MusicManager : MonoBehaviour
             case "level 3":
                 return "IngameMusic";
             default:
-                return "DefaultMusic";
+                return "MainMenuMusic";
         }
     }
 
