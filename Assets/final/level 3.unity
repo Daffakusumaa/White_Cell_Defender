@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 2949394190250307461}
   m_AnimatedTarget: {fileID: 0}
   m_LayerIndex: 0
   m_ShowDebugText: 0
@@ -2557,7 +2557,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1000905595613264291}
         m_TargetAssemblyTypeName: WinningManager, Assembly-CSharp
-        m_MethodName: LoadScene2
+        m_MethodName: LoadScene1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
