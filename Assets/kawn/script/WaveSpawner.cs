@@ -1,50 +1,47 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
     [System.Serializable]
     public class EnemyGroup
     {
-        [Header("Prefab musuh yang akan muncul di wave ini")]
         public GameObject enemyPrefab;
-        [Header("Jumlah musuh dari prefab ini")]
         public int count = 1;
-        [Header("Kecepatan spawn")]
         public float spawnRate = 1f;
     }
 
     [System.Serializable]
     public class Wave
     {
-        [Header("Nama wave")]
         public string name;
-        [Header("Grup musuh di wave ini")]
         public EnemyGroup[] enemyGroups;
     }
 
-    [Header("Wave yang Akan Dimainkan")]
     public Wave[] waves;
     private int currentWaveIndex = 0;
     private bool isSpawning = false;
     private bool gameEnded = false;
 
-    [Header("spawn musuh")]
     public Transform[] spawnPoints;
 
-    [Header("Panel UI")]
     public GameObject winPanel;
     public GameObject gameOverPanel;
 
-    [Header("Referensi Player")]
     public PlayerHealth playerHealth;
+
+    [Header("UI Wave")]
+    public TMP_Text waveText;
 
     void Start()
     {
         if (winPanel != null) winPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
 
-        
+        if (waveText != null)
+            waveText.text = "Wave 1";
+
         StartCoroutine(StartNextWave());
     }
 
@@ -62,7 +59,6 @@ public class WaveSpawner : MonoBehaviour
         if (isSpawning)
             return;
 
-       
         if (!EnemyMasihHidup())
         {
             if (currentWaveIndex >= waves.Length)
@@ -85,6 +81,14 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log($"Memulai Wave {currentWaveIndex + 1}: {wave.name}");
 
             
+            if (waveText != null)
+            {
+                if (currentWaveIndex == waves.Length - 1)
+                    waveText.text = "FINAL";
+                else
+                    waveText.text = $"Wave {currentWaveIndex + 1}";
+            }
+
             foreach (EnemyGroup group in wave.enemyGroups)
             {
                 yield return StartCoroutine(SpawnEnemyGroup(group));
@@ -113,13 +117,11 @@ public class WaveSpawner : MonoBehaviour
 
     bool EnemyMasihHidup()
     {
-        
         return GameObject.FindGameObjectsWithTag("enemy").Length > 0;
     }
 
     void WinGame()
     {
-        Debug.Log("Semua wave selesai — kamu MENANG!");
         if (winPanel != null) winPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
@@ -127,7 +129,6 @@ public class WaveSpawner : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Player mati — GAME OVER!");
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
         gameEnded = true;
         Time.timeScale = 0f;
