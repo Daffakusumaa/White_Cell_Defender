@@ -843,7 +843,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.0002037811}
-  m_SizeDelta: {x: 0, y: 1231}
+  m_SizeDelta: {x: 0, y: 1287}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &299396540
 MonoBehaviour:
@@ -872,18 +872,17 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 115
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "   GD \n   Muhammad Ravi Habibi\n\n   Programmer\n   Loksa Tua Manurung\n  
-    Denauval Al Daffa Kusuma\n   Salsabila Regina Puspitasari\n\n   Visual Art\n  
-    Aulia Nur Izzati\n   Rakhyan Wishnutama\n   Muhammad Ravi Habibi\n\n   Music\n  
-    u_9gm93txock (Pixabay)\n   LesiakowerFrom (Pixabay)\n\n   SFX\n   Jesse Grum
-    (Pixabay)\n   DrumMusicLooper5000 (Pixabay)\n   Jurij, David Dumais (Pixabay)\n  
-    u_xjrmmgxfru (Pixabay)"
+  m_Text: "Game Designer\nMuhammad Ravi Habibi\n\nProgrammer\nLoksa Tua Manurung\nDenauval
+    Al Daffa Kusuma\nSalsabila Regina Puspitasari\nMuhammad Khoirurrizqi\n\nVisual
+    Art\nAulia Nur Izzati\nRakhyan Wishnutama\nMuhammad Ravi Habibi\n\nMusic\nu_9gm93txock
+    (Pixabay)\nLesiakowerFrom (Pixabay)\n\nSound Effects\nJesse Grum (Pixabay)\nDrumMusicLooper5000
+    (Pixabay)\nJurij, David Dumais (Pixabay)\n  u_xjrmmgxfru (Pixabay)"
 --- !u!222 &299396541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3618,7 +3617,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1631089897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5102387}
+  m_AnchorMin: {x: 0, y: 0.5315493}
   m_AnchorMax: {x: 1, y: 0.99999976}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -5679,8 +5678,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1372561737}
   m_HandleRect: {fileID: 1372561736}
   m_Direction: 2
-  m_Value: 0.9999996
-  m_Size: 0.48976105
+  m_Value: 0.99999964
+  m_Size: 0.46845052
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
